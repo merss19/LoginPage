@@ -1,33 +1,31 @@
-import React, { Component } from 'react';
+import React, { Component,PropTypes } from 'react';
 import { connect } from 'react-redux';
-import ContactForm from '../components/ContactForm'
+import LoginPage from '../components/LoginPage'
 import { Grid, Row } from 'react-bootstrap';
-
+import { Field, reduxForm } from 'redux-form'
 import { auth } from '../actions'
 
 class App extends Component {
+
     handleSubmit = (values) => {
-        // Do something with the form values
-        console.log('values');
-        console.log(values);
-        console.log(this.props.auth)
+
         const { state } = this.props
-        console.log('state');
-        console.log(state );
         const { auth } = this.props
-        console.log('auth')
-        console.log(auth)
-        auth(values)
+
+        if(values.login && values.password) auth(values)
+        values.login =""
+        values.password =""
 
     }
+
     render() {
         const { validateAuth } = this.props.state
-        console.log('validate')
-        console.log(validateAuth)
+
         return (
+
         <Grid>
             <Row>
-                <ContactForm val = {validateAuth} onSubmit={this.handleSubmit} />
+                <LoginPage val = {validateAuth} onSubmit={this.handleSubmit} />
             </Row>
         </Grid>
 
@@ -36,11 +34,15 @@ class App extends Component {
 }
 
 export default connect((state) =>{
-        console.log('state')
-
-        const { validateAuth } = state
-    console.log(validateAuth)
-
         return { state }
     },  { auth }
 )(App)
+
+App.propTypes = {
+    validateAuth: PropTypes.shape({
+        data: PropTypes.Object,
+        loading: PropTypes.bool.isRequired,
+        result: PropTypes.bool.isRequired,
+        validate: PropTypes.bool.isRequired
+    })
+}

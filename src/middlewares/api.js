@@ -9,14 +9,12 @@ const SUCCESS_RES = {
     "Language":"EN"
 }
 
+//
 const request = (resolve, reject) => {
     return () => {
 
-
         //  Fail on server validation
         const validationFail = Math.random() < 0.5;
-        console.log('validationFail')
-        console.log(validationFail)
         if (validationFail) return reject(FAIL_RES);
 
         return resolve(SUCCESS_RES);
@@ -44,14 +42,10 @@ export default store => next => action => {
     httpGet(api,...rest)
         .then(
             response => {
-                console.log('response')
-                console.log(response)
-                console.log(type)
-                return next({type: type + SUCCESS,response,...rest})
+
+                return next({type: type + SUCCESS, response, ...rest})
             },
             error => {
-                console.log('error')
-                console.log(error)
                 return next({type: type + FAIL, error, ...rest})
             }
         );

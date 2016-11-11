@@ -1,0 +1,99 @@
+.contact-form
+	width: 215px
+	margin: 50px auto
+	text-align: center
+	padding: 0 15px
+
+	&__title
+		color: #000
+		font-size: 20px
+		position: relative
+		display: inline-block
+
+		&:before
+			content: ''
+			display: inline-block
+			background: url("img/login.png")
+			width: 32px
+			height: 38px
+			position: absolute
+			top: -12px
+			left: -39px
+
+	&__item
+		margin-top: 16px
+		outline: none
+		font-size: 10px
+		padding: 6px 6px
+		border: 1px solid #ccc
+		color: #bdbdbd
+		background-color: #fff
+		height: 35px
+		border-radius: 5px
+		width: 100%
+
+		&:-webkit-autofill
+			border: 1px solid #bdbdbd
+			-webkit-text-fill-color: #ccc
+			-webkit-box-shadow: 0 0 0 1000px #fff inset
+			transition: background-color 5000s ease-in-out 0s
+
+		&_type
+			&_invalid
+				&:-webkit-autofill
+					border: 1px solid red
+
+	&__btn
+		padding: 18px
+
+	&__submit
+		color: #4990cc
+		display: inline-block
+		background-color: #fff
+		border: 1px solid #cccccc
+		border-radius: 26px
+		height: 35px
+		width: 90px
+		outline: none
+		line-height: 32px
+		padding-right: 21px
+
+		&:after
+			content: ''
+			display: inline-block
+			background: url("img/arrow.png") no-repeat
+			width: 11px
+			height: 6px
+			position: relative
+			top: -3px
+			right: -5px
+
+		&_type
+			&_loading
+				padding: 0
+
+				&:after
+					background: url("img/loading.png") no-repeat
+					width: 28px
+					height: 28px
+					top: 1px
+					right: 0
+
+	&__form
+		padding-top: 12px
+
+	&__success
+		font-size: 22px
+		color: #000
+		position: relative
+		letter-spacing: -1px
+
+		&:before
+			content: ''
+			display: inline-block
+			background: url("img/check.png")
+			width: 38px
+			height: 32px
+			position: absolute
+			top: 0
+			left: -39px

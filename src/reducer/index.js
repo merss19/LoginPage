@@ -7,9 +7,4 @@ export default combineReducers({
     validateAuth:validateAuth
 })
 
-/*
- const reducers = {
- // ... your other reducers here ...
- form: formReducer     // <---- Mounted at 'form'
- }
- const reducer = combineReducers(reducers)*/
+
